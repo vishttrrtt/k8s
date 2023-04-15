@@ -1,0 +1,12 @@
+#Yaml file for load balancer which will expose the port to outside internet
+apiVersion: v1
+kind: Service
+metadata:
+  name: ps-lb
+spec:
+   type: LoadBalancer
+   ports:
+    - port: 80
+      targetPort: 8080
+   selector:
+      app: web
