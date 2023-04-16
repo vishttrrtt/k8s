@@ -1,0 +1,30 @@
+#Deployment yaml file to deploy 5 pods
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: hello-pod
+        image: nigelpoulton/getting-started-k8s:1.0
+        imagePullPolicy: Always 
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+           cpu: 250m
+          requests:
+           cpu: 200m
+

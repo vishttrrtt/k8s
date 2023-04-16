@@ -1,0 +1,20 @@
+#Tolerance file with the condition mysize=large
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tolerance-pod
+  labels:
+    app: web
+spec:
+  containers:
+    - name: web-contr
+      image: nigelpoulton/getting-started-k8s:1.0
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+  tolerations:
+        - key: "mysize"
+          operator: "Equal"
+          value: "large"
+          effect: "NoSchedule"
+
