@@ -1,0 +1,12 @@
+#Clusterip service for the ingress lab
+apiVersion: v1
+kind: Service
+metadata: 
+    name: clusterip-svc
+spec: 
+    selector: 
+      app: web
+    ports:
+       - name: web
+         port: 8080
+    type: ClusterIP
